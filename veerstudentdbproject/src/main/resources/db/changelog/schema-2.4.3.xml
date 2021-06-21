@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+	<changeSet id="4601-1" author="Veeresh (generated)">
+		<createTable tableName="course">
+			<column autoIncrement="true" name="c_id" type="INTEGER">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="c_name" type="TEXT"></column>
+			<column name="c_fees" type="INTEGER"></column>
+			<column name="c_duration" type="TEXT"></column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="4601-3" author="Veeresh (generated)">
+
+		<insert tableName="course">
+			<column name="c_name" value="Java"></column>
+			<column name="c_fees" value="2500"></column>
+			<column name="c_duration" value="3 month"></column>
+		</insert>
+
+		<insert tableName="course">
+			<column name="c_name" value="python"></column>
+			<column name="c_fees" value="3500"></column>
+			<column name="c_duration" value="2 month"></column>
+		</insert>
+		
+		<insert tableName="course">
+			<column name="c_name" value="Springboot"></column>
+			<column name="c_fees" value="9500"></column>
+			<column name="c_duration" value="4 month"></column>
+		</insert>
+		
+		<insert tableName="course">
+			<column name="c_name" value="csharp"></column>
+			<column name="c_fees" value="5500"></column>
+			<column name="c_duration" value="5 month"></column>
+		</insert>
+		
+		<insert tableName="course">
+			<column name="c_name" value="Spring"></column>
+			<column name="c_fees" value="8500"></column>
+			<column name="c_duration" value="4 month"></column>
+		</insert>
+
+
+
+	</changeSet>
+
+</databaseChangeLog> 

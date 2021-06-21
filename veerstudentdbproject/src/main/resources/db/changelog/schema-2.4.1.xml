@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+	<changeSet id="4601-1" author="Veeresh (generated)">
+		<createTable tableName="student">
+			<column autoIncrement="true" name="s_id" type="INTEGER">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="s_fname" type="TEXT"></column>
+			<column name="s_lname" type="TEXT"></column>
+			<column name="s_gender" type="TEXT"></column>
+			<column name="s_place" type="TEXT"></column>
+		</createTable>
+	</changeSet>
+
+
+
+
+	<changeSet id="4601-3" author="Veeresh (generated)">
+
+		<insert tableName="student">
+
+			<column name="s_fname" value="Veeresh"></column>
+			<column name="s_lname" value="BM"></column>
+			<column name="s_gender" value="Male"></column>
+			<column name="s_place" value="Davangere"></column>
+		</insert>
+
+		<insert tableName="student">
+			<column name="s_fname" value="prashanth"></column>
+			<column name="s_lname" value="BM"></column>
+			<column name="s_gender" value="Male"></column>
+			<column name="s_place" value="Davangere"></column>
+		</insert>
+		<insert tableName="student">
+			<column name="s_fname" value="prathik"></column>
+			<column name="s_lname" value="adhav"></column>
+			<column name="s_gender" value="Male"></column>
+			<column name="s_place" value="maharastra"></column>
+		</insert>
+
+
+
+	</changeSet>
+
+</databaseChangeLog> 
