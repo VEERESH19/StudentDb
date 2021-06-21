@@ -1,13 +1,14 @@
 package com.veer.studentdb.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.veer.studentdb.entity.Teacher;
@@ -16,42 +17,60 @@ import com.veer.studentdb.service.TeacherService;
 
 @RestController
 public class TeacherController {
-
-	// TeacherService class
+	
 	@Autowired
 	TeacherService teacherService;
 
-	// creating a get mapping that retrieves all the Teacher detail from the
-	// database
-	@GetMapping("/teacher")
-	private List<Teacher> getAllTeacher() {
-		return teacherService.getAllTeacher();
+	@RequestMapping(value = "/Teacher/all", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('Admin')")
+	public List<Teacher> getTeachers() {
+		System.out.println(this.getClass().getSimpleName() + " - Get all Teachers TeacherService is invoked.");
+		return teacherService.getTeachers();
 	}
 
-	// creating a get mapping that retrieves the detail of a specific Teacher
-	@GetMapping("/getTeacher/{t_id}")
-	private Teacher getTeacher(@PathVariable("t_id") Integer t_id) {
-		return teacherService.getTeacherById(t_id);
+	@RequestMapping(value = "/Teacher/{t_id}", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('Admin')")
+	public Teacher getTeacherById(@PathVariable int t_id) throws Exception {
+		System.out.println(this.getClass().getSimpleName() + " - Get Teacher details by id is invoked.");
+
+		Optional<Teacher> teach = teacherService.getTeacherById(t_id);
+		if (!teach.isPresent())
+			throw new Exception("Could not find Teacher with id- " + t_id);
+
+		return teach.get();
 	}
 
-	// creating a delete mapping that deletes a specified Teacher
-	@DeleteMapping("/deleteTeacher/{t_id}")
-	private void deleteStudent(@PathVariable("t_id") Integer t_id) {
-		teacherService.delete(t_id);
+	@RequestMapping(value = "/Teacher/add", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('Admin')")
+	public Teacher createTeacher(@RequestBody Teacher newteach) {
+		System.out.println(this.getClass().getSimpleName() + " - Create new Teacher method is invoked.");
+		return teacherService.addNewTeacher(newteach);
 	}
 
-	// creating post mapping that post the Teacher detail in the database
-	@PostMapping("/postTeacher")
-	private Integer saveBook(@RequestBody Teacher teacher) {
-		teacherService.saveOrUpdate(teacher);
-		return teacher.getT_id();
+	@RequestMapping(value = "/Teacher/update/{t_id}", method = RequestMethod.PUT)
+	@PreAuthorize("hasRole('Admin')")
+	public Teacher updateTeacher(@RequestBody Teacher updteach, @PathVariable int t_id) throws Exception {
+		System.out.println(this.getClass().getSimpleName() + " - Update Teacher details by id is invoked.");
+		return teacherService.updateTeacher(updteach);
 	}
 
-	// creating put mapping that updates the Teacher detail
-	@PutMapping("/teacher")
-	private Teacher update(@RequestBody Teacher teacher) {
-		teacherService.saveOrUpdate(teacher);
-		return teacher;
+	@RequestMapping(value = "/Teacher/delete/{t_id}", method = RequestMethod.DELETE)
+	@PreAuthorize("hasRole('Admin')")
+	public void deleteTeacherById(@PathVariable int t_id) throws Exception {
+		System.out.println(this.getClass().getSimpleName() + " - Delete Teacher by id is invoked.");
+
+		Optional<Teacher> teach = teacherService.getTeacherById(t_id);
+		if (!teach.isPresent())
+			throw new Exception("Could not find Teacher with id- " + t_id);
+
+		teacherService.deleteTeacherById(t_id);
+	}
+
+	@RequestMapping(value = "/Teacher/deleteall", method = RequestMethod.DELETE)
+	@PreAuthorize("hasRole('Admin')")
+	public void deleteAll() {
+		System.out.println(this.getClass().getSimpleName() + " - Delete all Teachers is invoked.");
+		teacherService.deleteAllTeachers();
 	}
 
 }

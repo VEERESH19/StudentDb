@@ -1,60 +1,73 @@
 package com.veer.studentdb.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.veer.studentdb.entity.Course;
 import com.veer.studentdb.service.CourseService;
-
 
 @RestController
 public class CourseController {
 
-	// CourseService class
 	@Autowired
 	CourseService courseService;
 
-	// creating a get mapping that retrieves all the Course detail from the
-	// database
-	@GetMapping("/getCourse")
+	@RequestMapping(value = "/Course/all", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('Admin')")
-	private List<Course> getAllCourse() {
-		return courseService.getAllCourse();
+	public List<Course> getCourses() {
+		System.out.println(this.getClass().getSimpleName() + " - Get all Courses courseService is invoked.");
+		return courseService.getCourses();
 	}
 
-	// creating a get mapping that retrieves the detail of a specific Course
-	@GetMapping("/getCourse/{c_id}")
-	private Course getCourse(@PathVariable("c_id") Integer c_id) {
-		return courseService.getCourseById(c_id);
+	@RequestMapping(value = "/Course/{c_id}", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('Admin')")
+	public Course getCourseById(@PathVariable int c_id) throws Exception {
+		System.out.println(this.getClass().getSimpleName() + " - Get Course details by id is invoked.");
+
+		Optional<Course> cour = courseService.getCourseById(c_id);
+		if (!cour.isPresent())
+			throw new Exception("Could not find Course with id- " + c_id);
+
+		return cour.get();
 	}
 
-	// creating a delete mapping that deletes a specified Course
-	@DeleteMapping("/deleteCourse/{c_id}")
-	private void deleteCourse(@PathVariable("c_id") Integer c_id) {
-		courseService.delete(c_id);
+	@RequestMapping(value = "/Course/add", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('Admin','User')")
+	public Course createCourse(@RequestBody Course newcour) {
+		System.out.println(this.getClass().getSimpleName() + " - Create new Course method is invoked.");
+		return courseService.addNewCourse(newcour);
 	}
 
-	// creating post mapping that post the Course detail in the database
-	@PostMapping("/postCourse")
-	private Integer saveCourse(@RequestBody Course course) {
-		courseService.saveOrUpdate(course);
-		return course.getC_id();
+	@RequestMapping(value = "/Course/update/{c_id}", method = RequestMethod.PUT)
+	@PreAuthorize("hasRole('Admin')")
+	public Course updateCourse(@RequestBody Course updcour, @PathVariable int c_id) throws Exception {
+		System.out.println(this.getClass().getSimpleName() + " - Update Course details by id is invoked.");
+		return courseService.updateCourse(updcour);
 	}
 
-	// creating put mapping that updates the Course detail
-	@PutMapping("/course")
-	private Course update(@RequestBody Course course) {
-		courseService.saveOrUpdate(course);
-		return course;
+	@RequestMapping(value = "/Course/delete/{c_id}", method = RequestMethod.DELETE)
+	@PreAuthorize("hasRole('Admin')")
+	public void deleteCourseById(@PathVariable int c_id) throws Exception {
+		System.out.println(this.getClass().getSimpleName() + " - Delete Course by id is invoked.");
+
+		Optional<Course> cour = courseService.getCourseById(c_id);
+		if (!cour.isPresent())
+			throw new Exception("Could not find Course with id- " + c_id);
+
+		courseService.deleteCourseById(c_id);
 	}
 
+	@RequestMapping(value = "/Course/deleteall", method = RequestMethod.DELETE)
+	@PreAuthorize("hasRole('Admin')")
+	public void deleteAll() {
+		System.out.println(this.getClass().getSimpleName() + " - Delete all Courses is invoked.");
+		courseService.deleteAllCourses();
+	}
 }

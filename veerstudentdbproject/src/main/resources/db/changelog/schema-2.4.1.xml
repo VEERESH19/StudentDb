@@ -8,6 +8,8 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
 
+
+
 	<changeSet id="4601-1" author="Veeresh (generated)">
 		<createTable tableName="student">
 			<column autoIncrement="true" name="s_id" type="INTEGER">
@@ -15,8 +17,8 @@
 			</column>
 			<column name="s_fname" type="TEXT"></column>
 			<column name="s_lname" type="TEXT"></column>
+			<column name="s_age" type="INTEGER"></column>
 			<column name="s_gender" type="TEXT"></column>
-			<column name="s_place" type="TEXT"></column>
 		</createTable>
 	</changeSet>
 
@@ -26,24 +28,39 @@
 	<changeSet id="4601-3" author="Veeresh (generated)">
 
 		<insert tableName="student">
-
+			
 			<column name="s_fname" value="Veeresh"></column>
-			<column name="s_lname" value="BM"></column>
-			<column name="s_gender" value="Male"></column>
-			<column name="s_place" value="Davangere"></column>
+			<column name="s_lname" value="B M"></column>
+			<column name="s_age" value="24"></column>
+			<column name="s_gender" value="male"></column>
 		</insert>
 
 		<insert tableName="student">
-			<column name="s_fname" value="prashanth"></column>
-			<column name="s_lname" value="BM"></column>
-			<column name="s_gender" value="Male"></column>
-			<column name="s_place" value="Davangere"></column>
+			<column name="s_fname" value="Prathik"></column>
+			<column name="s_lname" value="Adhav"></column>
+			<column name="s_age" value="23"></column>
+			<column name="s_gender" value="male"></column>
 		</insert>
+		
 		<insert tableName="student">
-			<column name="s_fname" value="prathik"></column>
-			<column name="s_lname" value="adhav"></column>
-			<column name="s_gender" value="Male"></column>
-			<column name="s_place" value="maharastra"></column>
+			<column name="s_fname" value="pavitra"></column>
+			<column name="s_lname" value="durga"></column>
+			<column name="s_age" value="28"></column>
+			<column name="s_gender" value="female"></column>
+		</insert>
+		
+		<insert tableName="student">
+			<column name="s_fname" value="kruthika"></column>
+			<column name="s_lname" value="b r"></column>
+			<column name="s_age" value="27"></column>
+			<column name="s_gender" value="female"></column>
+		</insert>
+		
+		<insert tableName="student">
+			<column name="s_fname" value="Nikath"></column>
+			<column name="s_lname" value="Taj"></column>
+			<column name="s_age" value="25"></column>
+			<column name="s_gender" value="female"></column>
 		</insert>
 
 

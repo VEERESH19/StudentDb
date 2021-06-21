@@ -7,7 +7,6 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-
 	<changeSet id="4601-1" author="Veeresh (generated)">
 		<createTable tableName="teacher">
 			<column autoIncrement="true" name="t_id" type="INTEGER">
@@ -18,9 +17,6 @@
 
 		</createTable>
 	</changeSet>
-
-
-
 
 	<changeSet id="4601-3" author="Veeresh (generated)">
 
@@ -35,21 +31,26 @@
 			<column name="t_name" value="Sham"></column>
 			<column name="t_age" value="47"></column>
 		</insert>
+		
 		<insert tableName="teacher">
 			<column name="t_name" value="Bheem"></column>
 			<column name="t_age" value="39"></column>
 		</insert>
-		
-				<insert tableName="teacher">
+
+		<insert tableName="teacher">
 			<column name="t_name" value="Khishore"></column>
 			<column name="t_age" value="48"></column>
 		</insert>
+		
 		<insert tableName="teacher">
 			<column name="t_name" value="Madhav"></column>
 			<column name="t_age" value="59"></column>
 		</insert>
-
-
+		
+		<insert tableName="teacher">
+			<column name="t_name" value="vishnu"></column>
+			<column name="t_age" value="69"></column>
+		</insert>
 
 	</changeSet>
 

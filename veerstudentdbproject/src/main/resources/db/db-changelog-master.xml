@@ -7,8 +7,10 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
    
     <include file="db/changelog/schema-2.4.1.xml"/> 
-   <include file="db/changelog/schema-2.4.2.xml"/> 
-   <include file="db/changelog/schema-2.4.3.xml"/> 
-   
+    <include file="db/changelog/schema-2.4.2.xml"/>
+    <include file="db/changelog/schema-2.4.3.xml"/>  
+     
+  
+ 
    
  </databaseChangeLog>

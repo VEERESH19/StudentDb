@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+	<changeSet id="4601-3" author="Veeresh (generated)">
+
+		<insert tableName="student">
+			
+			<column name="sFName" value="Veeresh"></column>
+			<column name="sLName" value="B M"></column>
+			<column name="sAge" value="24"></column>
+			<column name="sGender" value="male"></column>
+		</insert>
+
+		<insert tableName="student">
+			<column name="sFName" value="Prathik"></column>
+			<column name="sLName" value="Adhav"></column>
+			<column name="sAge" value="23"></column>
+			<column name="sGender" value="male"></column>
+		</insert>
+		
+		<insert tableName="student">
+			<column name="sFName" value="pavitra"></column>
+			<column name="sLName" value="durga"></column>
+			<column name="sAge" value="28"></column>
+			<column name="sGender" value="female"></column>
+		</insert>
+		
+		<insert tableName="student">
+			<column name="sFName" value="kruthika"></column>
+			<column name="sLName" value="b r"></column>
+			<column name="sAge" value="27"></column>
+			<column name="sGender" value="female"></column>
+		</insert>
+		
+		<insert tableName="student">
+			<column name="sFName" value="Nikath"></column>
+			<column name="sLName" value="Taj"></column>
+			<column name="sAge" value="25"></column>
+			<column name="sGender" value="female"></column>
+		</insert>
+
+
+
+	</changeSet>
+
+</databaseChangeLog> 

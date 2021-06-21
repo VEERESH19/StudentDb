@@ -1,25 +1,27 @@
 package com.veer.studentdb.entity;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "s_id")
+	
 	private Integer s_id;
+	
 	private String s_fname;
+	
 	private String s_lname;
+	
+	private Integer s_age;
+	
 	private String s_gender;
-	private String s_place;
-	
-	
+
 	public Integer getS_id() {
 		return s_id;
 	}
@@ -44,6 +46,14 @@ public class Student {
 		this.s_lname = s_lname;
 	}
 
+	public Integer getS_age() {
+		return s_age;
+	}
+
+	public void setS_age(Integer s_age) {
+		this.s_age = s_age;
+	}
+
 	public String getS_gender() {
 		return s_gender;
 	}
@@ -52,12 +62,15 @@ public class Student {
 		this.s_gender = s_gender;
 	}
 
-	public String getS_place() {
-		return s_place;
+	@Override
+	public String toString() {
+		return "Student [s_id=" + s_id + ", s_fname=" + s_fname + ", s_lname=" + s_lname + ", s_age=" + s_age
+				+ ", s_gender=" + s_gender + "]";
 	}
-
-	public void setS_place(String s_place) {
-		this.s_place = s_place;
-	}
+	
+	
+	
+	
+	
 
 }
