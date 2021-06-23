@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.veer.studentdb.Interface.UserService;
 import com.veer.studentdb.entity.Role;
 import com.veer.studentdb.entity.User;
 import com.veer.studentdb.repository.RoleDao;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;

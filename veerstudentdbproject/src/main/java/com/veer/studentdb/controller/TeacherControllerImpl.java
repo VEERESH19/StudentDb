@@ -2,7 +2,6 @@ package com.veer.studentdb.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,14 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.veer.studentdb.Interface.TeacherService;
 import com.veer.studentdb.entity.Teacher;
-import com.veer.studentdb.service.TeacherService;
-
 
 @RestController
-public class TeacherController {
-	
+public class TeacherControllerImpl {
+
 	@Autowired
 	TeacherService teacherService;
 
@@ -51,6 +48,18 @@ public class TeacherController {
 	@PreAuthorize("hasRole('Admin')")
 	public Teacher updateTeacher(@RequestBody Teacher updteach, @PathVariable int t_id) throws Exception {
 		System.out.println(this.getClass().getSimpleName() + " - Update Teacher details by id is invoked.");
+
+		Optional<Teacher> cour = teacherService.getTeacherById(t_id);
+		if (!cour.isPresent())
+			throw new Exception("Could not find employee with id- " + t_id);
+
+		if (updteach.getT_name() == null || updteach.getT_name().isEmpty())
+			updteach.setT_name(cour.get().getT_name());
+		if (updteach.getT_age() == 0)
+			updteach.setT_age(cour.get().getT_age());
+
+		updteach.setT_id(t_id);
+
 		return teacherService.updateTeacher(updteach);
 	}
 

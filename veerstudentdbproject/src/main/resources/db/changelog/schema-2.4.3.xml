@@ -6,8 +6,7 @@
 	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-
+	
 	<changeSet id="4601-1" author="Veeresh (generated)">
 		<createTable tableName="course">
 			<column autoIncrement="true" name="c_id" type="INTEGER">

@@ -16,6 +16,11 @@
 			<column name="t_age" type="INTEGER"></column>
 
 		</createTable>
+		
+		<!-- <addForeignKeyConstraint constraintName="c_id"
+			referencedTableName="course" baseColumnNames="c_id"
+			baseTableName="teacher" referencedColumnNames="c_id" /> -->
+		
 	</changeSet>
 
 	<changeSet id="4601-3" author="Veeresh (generated)">
@@ -51,6 +56,7 @@
 			<column name="t_name" value="vishnu"></column>
 			<column name="t_age" value="69"></column>
 		</insert>
+			
 
 	</changeSet>
 

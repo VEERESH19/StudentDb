@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="4601-1" author="Veeresh (generated)">
+		<createTable tableName="teacher">
+			<column autoIncrement="true" name="t_id" type="INTEGER">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="t_name" type="TEXT"></column>
+			<column name="t_age" type="INTEGER"></column>
+			<column name="c_id" type="INTEGER"></column>
+
+		</createTable>
+		
+		<addForeignKeyConstraint constraintName="c_id"
+			referencedTableName="course" baseColumnNames="c_id"
+			baseTableName="teacher" referencedColumnNames="c_id" />
+		
+	</changeSet>
+
+
+</databaseChangeLog> 
